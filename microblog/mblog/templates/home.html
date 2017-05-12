@@ -26,7 +26,10 @@
 
 <div class="container">
     <div class="form form-inline">
+        <form name='updateMB' action="/" method="POST">
+        {% csrf_token %}
         {{form}}
+        <input type="submit" value="提交">
     </div>
 
 <div class "page-content">
