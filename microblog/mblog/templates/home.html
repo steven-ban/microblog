@@ -1,0 +1,51 @@
+<html>
+    <html lang="zh-cn">
+
+<head>
+    <meta name="viewport" content="width=divice-width, initial-scale=1">
+    <link href="/static/Bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> 
+
+    <meta charset="utf-8">
+
+    <title>MicroBlog</title>
+
+    <meta name="author" content="Steven Ban">
+    
+    
+
+</head>
+
+
+
+<body>
+<div class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+    <p>Microblog for Steven and Eva</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="form form-inline">
+        {{form}}
+    </div>
+
+<div class "page-content">
+    <ul>
+    {% for mb in microblogs %}
+        <li>{{mb.content}}</li>
+        <li>{{mb.time | date:"D d M Y"}}<li>
+    {% endfor %}
+    </ul>
+       
+
+<p><hr></p>
+    <footer class="row">
+        <div class="span6">
+            <p>基于django创建。Steven Ban保留所有权利。</p>
+        </div>
+    </footer>
+
+    </div>
+</body>
+
+</html
