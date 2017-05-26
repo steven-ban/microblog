@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 
 from .models import MBlog
 from .forms import UpdateMBForm
@@ -11,8 +12,10 @@ def home(request) :
         if form.is_valid : 
             mblog = form.save()
             mblog.save()
+            return render(request, 'home.html', {'form' : UpdateMBForm, \
+        'microblogs': mblogs})
 
-    mblogs = MBlog.objects.order_by('-time')[0:10]
+    mblogs = MBlog.objects.order_by('-time')[0:3]
     return render(request, 'home.html', \
         {'form' : UpdateMBForm, \
         'microblogs': mblogs})
