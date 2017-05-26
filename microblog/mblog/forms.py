@@ -6,3 +6,6 @@ class UpdateMBForm(forms.ModelForm) :
     class Meta : 
         model = MBlog
         fields = ['content']
+        exclude = ()
+        widgets = {}
+        labels = {}

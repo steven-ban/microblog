@@ -6,11 +6,13 @@ from .forms import UpdateMBForm
 # Create your views here.
 
 def home(request) : 
-    form = UpdateMBForm(request.POST)
-    # if form.is_valid : 
-        #mblog = MBlog.objects.get_or_create(content=request.POST.get('content'))
+    if request.method == 'POST' : 
+        form = UpdateMBForm(request.POST)
+        if form.is_valid : 
+            mblog = form.save()
+            mblog.save()
 
-    mblogs = MBlog.objects.all()
+    mblogs = MBlog.objects.order_by('-time')[0:10]
     return render(request, 'home.html', \
         {'form' : UpdateMBForm, \
         'microblogs': mblogs})

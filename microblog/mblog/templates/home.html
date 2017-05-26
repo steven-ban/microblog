@@ -18,27 +18,43 @@
 
 
 <body>
-<div class="navbar navbar-fixed-top">
-    <div class="container-fluid">
-    <p>Microblog for Steven and Eva</p>
-    </div>
-</div>
 
-<div class="container">
-    <div class="form form-inline">
+    <nav class="navbar">
+        <div class="container">
+    <h1 align="center">Steven的个人微博</h1>
+        </div>
+    </nav>
+
+    <div class="container">   
+
+<div class="page-content">
+
+<div class="form form-horizontal" align="center">
         <form name='updateMB' action="/" method="POST">
+        <div class="form-group>"
         {% csrf_token %}
-        {{form}}
-        <input type="submit" value="提交">
+        {{form.as_p}}
+        <input type="button" class="btn btn-default" type="submit" value="提交">
+        </div>
     </div>
 
-<div class "page-content">
-    <ul>
     {% for mb in microblogs %}
-        <li>{{mb.content}}</li>
-        <li>{{mb.time | date:"D d M Y"}}<li>
+    {% cycle "<div class='row'> <div class='col-md-4'>" "<div class='col-md-4'>" "<div class='col-md-4'>" %}
+    <div class="panel panel-info">
+    <div class="panel-body">
+        <p>{{mb.content}}</p>
+    </div>
+    <div class="panel-footer" align="right">
+        <small>
+        {{mb.time | date:"Y年Md日，D"}}
+        </small>
+    </div>
+        </div>
+        
+        {% cycle "</div>" "</div>"  "</div>" %}
+
     {% endfor %}
-    </ul>
+    </div>
        
 
 <p><hr></p>
@@ -49,6 +65,9 @@
     </footer>
 
     </div>
+    </div>
+    </div>
+
 </body>
 
 </html
