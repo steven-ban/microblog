@@ -12,10 +12,17 @@ def home(request) :
         if form.is_valid : 
             mblog = form.save()
             mblog.save()
-            return render(request, 'home.html', {'form' : UpdateMBForm, \
-        'microblogs': mblogs})
+            # return render(request, 'home.html', {'form' : UpdateMBForm, \
+        #'microblogs': mblogs})
+    elif request.method == 'GET' : 
+        form = UpdateMBForm(request.GET)
 
     mblogs = MBlog.objects.order_by('-time')[0:3]
     return render(request, 'home.html', \
         {'form' : UpdateMBForm, \
         'microblogs': mblogs})
+
+def all(request) : 
+    mblogs = MBlog.objects.order_by('-time')
+    return render(request, 'all.html', \
+        {'microblogs' : mblogs})

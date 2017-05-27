@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block mmb %}
+<div class="table-responsive">
+<table class="table table-striped">
+    {% for mb in microblogs %}
+        <tr>
+            <td class="col-md-1">{{forloop.counter}}</td>
+            <td class="col-md-7">{{mb.content}}</td>
+            <td class="col-md-4">{{mb.time | date:"Y年Md日，D"}}
+        </tr>
+    {% endfor %}
+</table>
+</div>
+
+{% endblock %}
