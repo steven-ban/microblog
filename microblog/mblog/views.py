@@ -12,6 +12,7 @@ def home(request) :
         if form.is_valid : 
             mblog = form.save()
             mblog.save()
+            return HttpResponseRedirect("/")
             # return render(request, 'home.html', {'form' : UpdateMBForm, \
         #'microblogs': mblogs})
     elif request.method == 'GET' : 
